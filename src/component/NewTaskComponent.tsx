@@ -16,23 +16,27 @@ export default function NewTaskComponent() {
             return;
         }
         axios.post("/api/todo", {description: data.description, status: "OPEN"})
-        event.target.reset()
-        nav("/")
+            .then(() => {
+                event.target.reset();
+                nav("/");
+            })
+
+
     }
 
     return (
 
 
-            <form onSubmit={handleSubmit} className="new-task-form">
-                <h2>Place new task</h2>
-                <label>
-                    <textarea name="description" placeholder="Task description..."/>
-                </label>
-                <div className="new-task-buttons-panel">
-                    <input type="button" value="Cancel" onClick={() => nav("/")}/>
-                    <input type="submit" value="Create"/>
-                </div>
-            </form>
+        <form onSubmit={handleSubmit} className="new-task-form">
+            <h2>Place new task</h2>
+            <label>
+                <textarea name="description" placeholder="Task description..."/>
+            </label>
+            <div className="new-task-buttons-panel">
+                <input type="button" value="Cancel" onClick={() => nav("/")}/>
+                <input type="submit" value="Create"/>
+            </div>
+        </form>
 
 
     );

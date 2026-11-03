@@ -8,7 +8,7 @@ function App() {
 
     return (
         <>
-            <h1>Todo-Frontend</h1>
+            <h1>ToDo-Frontend</h1>
 
             <Routes>
                 <Route path={"/"} element={<TodoBoardComponent/>}/>
