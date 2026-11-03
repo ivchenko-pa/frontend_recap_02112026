@@ -20,6 +20,10 @@ export default function NewTaskComponent() {
                 event.target.reset();
                 nav("/");
             })
+            .catch((error) => {
+                console.log(error);
+                alert("Could not create task!");
+            });
 
 
     }
