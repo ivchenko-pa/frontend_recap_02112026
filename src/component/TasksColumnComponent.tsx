@@ -1,13 +1,14 @@
 import type {Task} from "../type/Task.ts";
 import TaskComponent from "./TaskComponent.tsx";
 
-type InProgressTasksProps = {
+type TasksColumnComponentProps = {
+    colName:string
     tasks:Task[],
     reloadTrigger:boolean,
     setReloadTrigger:(flag:boolean)=>void
 }
 
-export default function InProgressTasksComponent(props:Readonly<InProgressTasksProps>){
+export default function TasksColumnComponent(props:Readonly<TasksColumnComponentProps>){
 
     const tasks = props.tasks.map(
         (task)=> (<TaskComponent key={task.id} id={task.id} status={task.status} description={task.description} reloadTrigger={props.reloadTrigger} setReloadTrigger={props.setReloadTrigger}/>)
@@ -15,7 +16,7 @@ export default function InProgressTasksComponent(props:Readonly<InProgressTasksP
     return (
 
         <section className="board-column">
-            <h2>In progress</h2>
+            <h2>{props.colName}</h2>
             {tasks}
         </section>
     )

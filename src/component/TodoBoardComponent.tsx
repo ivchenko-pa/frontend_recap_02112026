@@ -1,10 +1,8 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import type {Task} from "../type/Task.ts";
-import OpenTasksComponent from "./OpenTasksComponent.tsx";
-import InProgressTasksComponent from "./InProgressTasksComponent.tsx";
-import DoneTasksComponent from "./DoneTasksComponent.tsx";
 import {useNavigate} from "react-router-dom";
+import TasksColumnComponent from "./TasksColumnComponent.tsx";
 
 export default function TodoBoardComponent() {
 
@@ -45,15 +43,18 @@ export default function TodoBoardComponent() {
                 <input type="button" onClick={() => nav("/newTask")} value="Place new task"/>
             </div>
             <section className="board-section">
-                <OpenTasksComponent tasks={openTasks}
+
+                <TasksColumnComponent colName="Open" tasks={openTasks}
                                     reloadTrigger={reloadTrigger}
                                     setReloadTrigger={setReloadTrigger}/>
-                <InProgressTasksComponent tasks={inProgressTasks}
-                                          reloadTrigger={reloadTrigger}
-                                          setReloadTrigger={setReloadTrigger}/>
-                <DoneTasksComponent tasks={doneTasks}
-                                    reloadTrigger={reloadTrigger}
-                                    setReloadTrigger={setReloadTrigger}/>
+
+                <TasksColumnComponent colName="In Progress" tasks={inProgressTasks}
+                                      reloadTrigger={reloadTrigger}
+                                      setReloadTrigger={setReloadTrigger}/>
+
+                <TasksColumnComponent colName="Open" tasks={doneTasks}
+                                      reloadTrigger={reloadTrigger}
+                                      setReloadTrigger={setReloadTrigger}/>
             </section>
         </>
     )
