@@ -7,7 +7,7 @@ import DoneTasksComponent from "./DoneTasksComponent.tsx";
 
 export default function TodoBoardComponent() {
 
-    const [reloadTrigger, setReloadTrigger] = useState<number>(0)
+    const [reloadTrigger, setReloadTrigger] = useState<boolean>(false)
     const [openTasks, setOpenTasks] = useState<Task[]>([])
     const [doneTasks, setDoneTasks] = useState<Task[]>([])
     const [inProgressTasks, setInProgressTasks] = useState<Task[]>([])
@@ -41,9 +41,9 @@ export default function TodoBoardComponent() {
 
     return (
         <section className="board-section">
-            <OpenTasksComponent tasks={openTasks} setReloadTrigger={setReloadTrigger}/>
-            <InProgressTasksComponent tasks={inProgressTasks} setReloadTrigger={setReloadTrigger}/>
-            <DoneTasksComponent tasks={doneTasks} setReloadTrigger={setReloadTrigger}/>
+            <OpenTasksComponent tasks={openTasks} reloadTrigger={reloadTrigger} setReloadTrigger={setReloadTrigger}/>
+            <InProgressTasksComponent tasks={inProgressTasks} reloadTrigger={reloadTrigger} setReloadTrigger={setReloadTrigger}/>
+            <DoneTasksComponent tasks={doneTasks} reloadTrigger={reloadTrigger} setReloadTrigger={setReloadTrigger}/>
         </section>
     )
 
