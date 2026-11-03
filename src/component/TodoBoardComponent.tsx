@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
-import type {Task} from "../Task.ts";
+import type {Task} from "../type/Task.ts";
 import OpenTasksComponent from "./OpenTasksComponent.tsx";
 import InProgressTasksComponent from "./InProgressTasksComponent.tsx";
 import DoneTasksComponent from "./DoneTasksComponent.tsx";

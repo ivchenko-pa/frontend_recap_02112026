@@ -1,4 +1,4 @@
-import type {Task} from "../Task.ts";
+import type {Task} from "../type/Task.ts";
 import TaskComponent from "./TaskComponent.tsx";
 
 type OpenTasksProps = {

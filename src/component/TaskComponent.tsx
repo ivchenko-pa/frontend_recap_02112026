@@ -47,7 +47,6 @@ export default function TaskComponent(props: Readonly<TaskProps>) {
     return (
 
         <section className="task">
-            <p>ID: {props.id}</p>
             <p>Status: {props.status}</p>
             <p>Description: {props.description}</p>
             <div className={`task-buttons ${props.status === "OPEN" ? "task-buttons-right" : ""}`}>            {
