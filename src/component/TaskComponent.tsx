@@ -13,10 +13,11 @@ export default function TaskComponent(props: Readonly<TaskProps>) {
     function deleteTask() {
 
         axios.delete("/api/todo/" + props.id)
-            .then(r => {
-                console.log(r.data);
-                props.setReloadTrigger(!props.reloadTrigger)
-            })
+            .then(() => props.setReloadTrigger(!props.reloadTrigger))
+            .catch(error => {
+                console.error("Delete failed:", error);
+                alert("Could not delete task!");
+            });
     }
 
     function updateTask(toStatus: string) {
@@ -26,10 +27,11 @@ export default function TaskComponent(props: Readonly<TaskProps>) {
             "description": props.description,
             "status": toStatus
         })
-            .then(r => {
-                console.log(r.data);
-                props.setReloadTrigger(!props.reloadTrigger)
-            })
+            .then(()=> props.setReloadTrigger(!props.reloadTrigger))
+            .catch(error => {
+                console.error("Update failed:", error);
+                alert("Could not update task!");
+            });
     }
 
     function toOpen() {
@@ -54,18 +56,18 @@ export default function TaskComponent(props: Readonly<TaskProps>) {
                     <input type="button" value="To in progress" onClick={toInProgress}/>
                 </>
             }
-            {
-                props.status === "IN_PROGRESS" && <>
-                    <input type="button" value="To open" onClick={toOpen}/>
-                    <input type="button" value="To done" onClick={toDone}/>
-                </>
-            }
-            {
-                props.status === "DONE" && <>
-                    <input type="button" value="To in progress" onClick={toInProgress}/>
-                    <input type="button" value="Delete" onClick={deleteTask}/>
-                </>
-            }
+                {
+                    props.status === "IN_PROGRESS" && <>
+                        <input type="button" value="To open" onClick={toOpen}/>
+                        <input type="button" value="To done" onClick={toDone}/>
+                    </>
+                }
+                {
+                    props.status === "DONE" && <>
+                        <input type="button" value="To in progress" onClick={toInProgress}/>
+                        <input type="button" value="Delete" onClick={deleteTask}/>
+                    </>
+                }
             </div>
         </section>
 
