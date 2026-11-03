@@ -4,6 +4,7 @@ import type {Task} from "../Task.ts";
 import OpenTasksComponent from "./OpenTasksComponent.tsx";
 import InProgressTasksComponent from "./InProgressTasksComponent.tsx";
 import DoneTasksComponent from "./DoneTasksComponent.tsx";
+import {useNavigate} from "react-router-dom";
 
 export default function TodoBoardComponent() {
 
@@ -12,6 +13,7 @@ export default function TodoBoardComponent() {
     const [doneTasks, setDoneTasks] = useState<Task[]>([])
     const [inProgressTasks, setInProgressTasks] = useState<Task[]>([])
 
+    const nav = useNavigate()
 
     useEffect(() => {
         axios.get("/api/todo")
@@ -40,11 +42,21 @@ export default function TodoBoardComponent() {
 
 
     return (
-        <section className="board-section">
-            <OpenTasksComponent tasks={openTasks} reloadTrigger={reloadTrigger} setReloadTrigger={setReloadTrigger}/>
-            <InProgressTasksComponent tasks={inProgressTasks} reloadTrigger={reloadTrigger} setReloadTrigger={setReloadTrigger}/>
-            <DoneTasksComponent tasks={doneTasks} reloadTrigger={reloadTrigger} setReloadTrigger={setReloadTrigger}/>
-        </section>
+        <>
+            <div className="new-task-button-container">
+                <input type="button" value="Place new task"
+                    onClick={() => nav("/newTask")}
+                />
+            </div>
+            <section className="board-section">
+                <OpenTasksComponent tasks={openTasks} reloadTrigger={reloadTrigger}
+                                    setReloadTrigger={setReloadTrigger}/>
+                <InProgressTasksComponent tasks={inProgressTasks} reloadTrigger={reloadTrigger}
+                                          setReloadTrigger={setReloadTrigger}/>
+                <DoneTasksComponent tasks={doneTasks} reloadTrigger={reloadTrigger}
+                                    setReloadTrigger={setReloadTrigger}/>
+            </section>
+        </>
     )
 
 }

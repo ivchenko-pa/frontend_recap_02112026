@@ -14,7 +14,7 @@ export default function InProgressTasksComponent(props:Readonly<InProgressTasksP
     )
     return (
 
-        <section>
+        <section className="board-column">
             <h2>In progress</h2>
             {tasks}
         </section>

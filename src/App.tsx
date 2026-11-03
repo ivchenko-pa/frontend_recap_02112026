@@ -1,12 +1,19 @@
 import './App.css'
 import TodoBoardComponent from "./component/TodoBoardComponent.tsx";
+import {Route, Routes, useNavigate} from "react-router-dom";
+import NewTaskComponent from "./component/NewTaskComponent.tsx";
 
 function App() {
+
 
     return (
         <>
             <h1>Todo-Frontend</h1>
-            <TodoBoardComponent/>
+
+            <Routes>
+                <Route path={"/"} element={<TodoBoardComponent/>}/>
+                <Route path={"/newTask"} element={<NewTaskComponent/>}/>
+            </Routes>
 
         </>
     )

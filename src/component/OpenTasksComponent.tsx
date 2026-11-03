@@ -14,7 +14,7 @@ export default function OpenTasksComponent(props:Readonly<OpenTasksProps>){
     )
     return (
 
-        <section>
+        <section className="board-column">
             <h2>Open</h2>
             {tasks}
         </section>

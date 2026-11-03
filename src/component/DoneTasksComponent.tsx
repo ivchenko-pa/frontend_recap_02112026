@@ -14,7 +14,7 @@ export default function DoneTasksComponent(props:Readonly<DoneTasksProps>){
     )
     return (
 
-        <section>
+        <section className="board-column">
             <h2>Done</h2>
             {tasks}
         </section>

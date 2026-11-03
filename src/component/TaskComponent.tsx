@@ -50,8 +50,7 @@ export default function TaskComponent(props: Readonly<TaskProps>) {
             <p>ID: {props.id}</p>
             <p>Status: {props.status}</p>
             <p>Description: {props.description}</p>
-
-            {
+            <div className={`task-buttons ${props.status === "OPEN" ? "task-buttons-right" : ""}`}>            {
                 props.status === "OPEN" && <>
                     <input type="button" value="To in progress" onClick={toInProgress}/>
                 </>
@@ -68,6 +67,7 @@ export default function TaskComponent(props: Readonly<TaskProps>) {
                     <input type="button" value="Delete" onClick={deleteTask}/>
                 </>
             }
+            </div>
         </section>
 
     )
