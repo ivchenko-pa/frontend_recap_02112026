@@ -1,3 +1,9 @@
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 h1, h2 {
   text-align: center;
 }
@@ -75,4 +81,12 @@ input[type="submit"]{
   display: flex;
   justify-content: center;
   gap: 15px;
+}
+
+footer {
+  margin-top: auto;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 15px;
 }

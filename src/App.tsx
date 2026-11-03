@@ -15,6 +15,9 @@ function App() {
                 <Route path={"/newTask"} element={<NewTaskComponent/>}/>
             </Routes>
 
+            <footer>
+                <p>© 2026 Pavlo Ivchenko</p>
+            </footer>
         </>
     )
 }
